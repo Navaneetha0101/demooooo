@@ -1,0 +1,205 @@
+
+<div *ngIf="fileNamePassed; else loaderTmpl"
+     class="w-full h-full" [class.pl-4]="isShowCloseButton">
+
+     <div class="flex items-center pt-4 text-textDarkest">
+        <i-button 
+        icon=""
+        [className]="'btn-empty font-semibold uppercase text-textMedium text-13'">
+        DIGITALQC - HELP
+        </i-button>
+        <div class="flex-auto"></div>
+        <i-button *ngIf="isShowCloseButton"
+                  icon="times"
+                  [iconSize]="24"
+                  (click)="closeModal()"
+                  [className]="'btn-empty'">
+        </i-button>
+    </div> 
+    <div class="flex items-center pt-4 text-textDarkest">
+   <nz-table class="mt-3 w-full">
+      <nz-row> 
+         <nz-col nzSpan="4" id="side" *ngIf="toc">
+            <div id="vtoc" *ngIf="sidemenubar === 1">
+            <span color = secondary class="eblabel2">
+               TABLE OF CONTENTS
+            </span>
+            <div *ngFor="let f of tree" class='toc'>  
+               <div class="toc-content" (click)="topicClicked(f.anchor)">
+                  <svg-icon
+                     class="toc-icon"
+                     (click)="f.open = !f.open; $event.stopPropagation()"
+                     name="chevron-right"
+                     *ngIf="!f.open">
+                  </svg-icon>
+
+                  <svg-icon
+                     class="toc-icon"
+                     (click)="f.open = !f.open; $event.stopPropagation()"
+                     name="chevron-down"
+                     *ngIf="f.open">
+                  </svg-icon>
+
+                  <span class="eblabel1">{{ f.name }}</span>
+               </div>
+
+               <div *ngIf="f.open" class = "dtoc" >
+                  <div *ngFor="let sub of f.children" class="toc">
+                     <div class="toc-content" (click)="topicClicked(sub.anchor)">
+                           <svg-icon
+                              class="toc-icon"
+                              (click)="sub.open = !sub.open; $event.stopPropagation()"
+                              name="chevron-right"
+                              *ngIf="!sub.open">
+                           </svg-icon>
+
+                           <svg-icon
+                              class="toc-icon"
+                              (click)="sub.open = !sub.open; $event.stopPropagation()"
+                              name="chevron-down"
+                              *ngIf="sub.open">
+                           </svg-icon>
+
+                           <span class="eblabel1">{{ sub.name }}</span>
+                        </div>
+ 
+                     <div *ngIf="sub.open" class = "dtoc">
+                        <div *ngFor="let sub1 of sub.children" class="toc">
+
+                           <div class="toc-content" (click)="topicClicked(sub1.anchor)">
+                           <svg-icon
+                              class="toc-icon"
+                              (click)="sub1.open = !sub1.open; $event.stopPropagation()"
+                              name="chevron-right"
+                              *ngIf="!sub1.open">
+                           </svg-icon>
+
+                           <svg-icon
+                              class="toc-icon"
+                              (click)="sub1.open = !sub1.open; $event.stopPropagation()"
+                              name="chevron-down"
+                              *ngIf="sub1.open">
+                           </svg-icon>
+
+                           <span class="eblabel1">{{ sub1.name }}</span>
+                           </div>
+
+                           <div *ngIf="sub1.open" class = "dtoc">
+                              <div *ngFor="let sub2 of sub1.children" class="toc">
+                                 <div class="toc-content" (click)="topicClicked(sub2.anchor)">
+                                    <svg-icon
+                                       class="toc-icon"
+                                       (click)="sub2.open = !sub2.open; $event.stopPropagation()"
+                                       name="chevron-right"
+                                       *ngIf="!sub2.open">
+                                    </svg-icon>
+
+                                    <svg-icon
+                                       class="toc-icon"
+                                       (click)="sub2.open = !sub2.open; $event.stopPropagation()"
+                                       name="chevron-down"
+                                       *ngIf="sub2.open">
+                                    </svg-icon>
+
+                                    <span class="eblabel1">{{ sub2.name }}</span>
+                                    </div>
+                                 <div *ngIf="sub2.open" class = "dtoc">
+                                    <div *ngFor="let sub3 of sub2.children"  class ='toc'>
+                                       <div class="toc-content" (click)="topicClicked(sub3.anchor)">
+                                          <svg-icon
+                                             class="toc-icon"
+                                             (click)="sub3.open = !sub3.open; $event.stopPropagation()"
+                                             name="chevron-right"
+                                             *ngIf="!sub3.open">
+                                          </svg-icon>
+
+                                          <svg-icon
+                                             class="toc-icon"
+                                             (click)="sub3.open = !sub3.open; $event.stopPropagation()"
+                                             name="chevron-down"
+                                             *ngIf="sub3.open">
+                                          </svg-icon>
+
+                                          <span class="eblabel1">{{ sub3.name }}</span>
+                                          </div>
+                                       
+                              
+                                       <div *ngIf="sub3.open" class = "dtoc">
+                                          <div *ngFor="let sub4 of sub3.children" class="toc">
+
+                                             <div class="toc-content" (click)="topicClicked(sub4.anchor)">
+                                                <svg-icon
+                                                   class="toc-icon"
+                                                   (click)="sub4.open = !sub4.open; $event.stopPropagation()"
+                                                   name="chevron-right"
+                                                   *ngIf="!sub4.open">
+                                                </svg-icon>
+
+                                                <svg-icon
+                                                   class="toc-icon"
+                                                   (click)="sub4.open = !sub4.open; $event.stopPropagation()"
+                                                   name="chevron-down"
+                                                   *ngIf="sub4.open">
+                                                </svg-icon>
+
+                                                <span class="eblabel1">{{ sub4.name }}</span>
+                                                </div>
+                                             
+                                             <div *ngIf="sub4.open" class = "dtoc">
+                                                <div *ngFor="let sub5 of sub4.children" class="toc">
+
+                                                   <div class="toc-content" (click)="topicClicked(sub5.anchor)">
+                                                      <svg-icon
+                                                         class="toc-icon"
+                                                         (click)="sub5.open = !sub5.open; $event.stopPropagation()"
+                                                         name="chevron-right"
+                                                         *ngIf="!sub5.open">
+                                                      </svg-icon>
+
+                                                      <svg-icon
+                                                         class="toc-icon"
+                                                         (click)="sub5.open = !sub5.open; $event.stopPropagation()"
+                                                         name="chevron-down"
+                                                         *ngIf="sub5.open">
+                                                      </svg-icon>
+
+                                                      <span class="eblabel1">{{ sub5.name }}</span>
+                                                      </div>
+                                                </div> 
+                                             </div >  
+                                          </div> 
+                                       </div >  
+                                    </div> 
+                                 </div >  
+                              </div> 
+                           </div >  
+                        </div> 
+                     </div >  
+                  </div> 
+               </div>
+            </div> 
+         </div>
+         
+         </nz-col>
+ 
+
+         <nz-col nzSpan="20">
+            <div  id="border" style="padding-left:5px; border-left: solid black 1px;">
+               <div class="maincard ml-1 mr-3" id="printcontent">
+                     <div  class = "mainC" id=“actcontent” [innerHTML]="maincontent"></div> 
+            </div>
+            </div>
+        </nz-col>
+
+      </nz-row>
+    </nz-table>    
+    </div>
+   
+
+</div>
+
+
+<ng-template #loaderTmpl>
+    <job-loader></job-loader>
+</ng-template>
+
